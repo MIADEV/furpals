@@ -4,6 +4,7 @@ import {
     registerUser,
     uploadUserPhoto,
     logoutUser,
+    getAllUsers,
     getUserProfile,
     updateUserProfile,
 } from '../controllers/userController.js';
@@ -14,6 +15,7 @@ const router = express.Router();
 router.post('/', registerUser);
 router.post('/auth', authUser);
 router.post('/logout', logoutUser);
+router.get('/all', getAllUsers)
 router
     .route('/profile')
     .get(protect, getUserProfile)

@@ -131,6 +131,16 @@ const uploadUserPhoto = asyncHandler(async (req, res) => {
     }
 });
 
+const getAllUsers = asyncHandler(async (req, res) => {
+    const allUser = await User.find({});
+
+    if (allUser) {
+        res.status(200).json(allUser);
+    } else {
+        res.status(404);
+        throw new Error('No users');
+    }
+});
 // app.post('/upload', (req, res) => {
 //   if (req.files === null) {
 //     return res.status(400).json({ msg: 'No file uploaded' });
@@ -153,6 +163,7 @@ export {
     registerUser,
     uploadUserPhoto,
     logoutUser,
+    getAllUsers,
     getUserProfile,
     updateUserProfile,
 };
